@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="%231E3A2B"/><text x="16" y="21" font-family="Georgia,serif" font-size="13" fill="%23F2EFE7" text-anchor="middle">AWL</text></svg>'>
+<title>AWL Sublist 5–10 · 单词表</title>
+<style>
+  :root{
+    --paper:#F2EFE7;
+    --paper-2:#FAF8F2;
+    --ink:#17150F;
+    --ink-2:#3B382F;
+    --muted:#7C7668;
+    --line:#DAD4C6;
+    --line-strong:#C2BAA9;
+    --accent:#1E3A2B;
+    --accent-soft:#E2E8DF;
+    --rust:#8A3A26;
+    --radius:18px;
+    --font-serif:"Iowan Old Style","Palatino Linotype","Book Antiqua",Georgia,"Songti SC","STSong",serif;
+    --font-sans:"Helvetica Neue",-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--font-sans);
+    font-size:15px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  button,input{font:inherit;color:inherit}
+  button{cursor:pointer}
+  svg{display:block}
+  .sr-only{
+    position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+    overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;
+  }
+  .shell{max-width:1180px;margin:0 auto;padding:0 32px}
+  @media (max-width:640px){.shell{padding:0 20px}}
+
+  /* ---------- masthead ---------- */
+  .masthead{
+    display:flex;align-items:flex-end;justify-content:space-between;gap:40px;
+    padding:54px 0 30px;
+    border-bottom:1px solid var(--line-strong);
+  }
+  .kicker{
+    display:flex;align-items:center;gap:10px;
+    font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;
+    color:var(--muted);margin:0 0 16px;
+  }
+  .kicker .dot{width:5px;height:5px;border-radius:50%;background:var(--rust)}
+  h1{
+    margin:0;
+    font-family:var(--font-serif);
+    font-weight:400;
+    font-size:clamp(40px,5.2vw,66px);
+    line-height:.94;
+    letter-spacing:-.015em;
+  }
+  h1 em{
+    font-style:italic;
+    color:var(--accent);
+  }
+  .lede{
+    margin:14px 0 0;color:var(--ink-2);font-size:13.5px;letter-spacing:.02em;
+  }
+  .progress-block{flex:0 0 268px;padding-bottom:4px}
+  .progress-label{
+    display:flex;align-items:center;justify-content:space-between;
+    font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);
+    margin-bottom:6px;
+  }
+  .progress-read{display:flex;align-items:baseline;gap:8px}
+  .progress-read strong{
+    font-family:var(--font-serif);font-weight:400;
+    font-size:clamp(46px,5vw,62px);line-height:1;letter-spacing:-.02em;
+    font-variant-numeric:tabular-nums;
+  }
+  .progress-read span{font-family:var(--font-serif);font-size:19px;color:var(--muted)}
+  .bar{
+    height:4px;background:var(--line);border-radius:99px;overflow:hidden;margin:14px 0 8px;
+  }
+  .bar i{
+    display:block;height:100%;width:0;background:var(--accent);border-radius:99px;
+    transition:width .5s cubic-bezier(.2,.8,.2,1);
+  }
+  .progress-note{font-size:11.5px;color:var(--muted);letter-spacing:.03em;font-variant-numeric:tabular-nums}
+
+  /* ---------- unit switcher ---------- */
+  .units{
+    display:flex;gap:7px;overflow-x:auto;
+    padding:20px 0 20px;
+    border-bottom:1px solid var(--line);
+    scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;
+  }
+  .units::-webkit-scrollbar{display:none}
+  .unit-tab{
+    flex:0 0 auto;
+    display:flex;flex-direction:column;gap:2px;
+    min-width:102px;
+    padding:9px 15px 10px;
+    border:1px solid var(--line-strong);border-radius:13px;
+    background:transparent;text-align:left;
+    transition:background .18s,border-color .18s,color .18s,transform .12s;
+  }
+  .unit-tab:hover{background:rgba(255,253,247,.7);border-color:var(--ink-2)}
+  .unit-tab:active{transform:translateY(1px)}
+  .unit-tab:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .unit-tab .u-label{
+    font-family:var(--font-serif);font-size:15.5px;letter-spacing:.01em;line-height:1.2;
+    white-space:nowrap;
+  }
+  .unit-tab .u-count{
+    font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--muted);font-variant-numeric:tabular-nums;
+  }
+  .unit-tab .u-bar{
+    height:2px;border-radius:99px;background:var(--line);
+    margin-top:5px;overflow:hidden;width:100%;
+  }
+  .unit-tab .u-bar i{
+    display:block;height:100%;width:0;background:var(--accent);border-radius:99px;
+    transition:width .4s ease;
+  }
+  .unit-tab.active{
+    background:var(--ink);border-color:var(--ink);color:var(--paper-2);
+  }
+  .unit-tab.active .u-count{color:rgba(250,248,242,.62)}
+  .unit-tab.active .u-bar{background:rgba(250,248,242,.22)}
+  .unit-tab.active .u-bar i{background:#A9C4B2}
+
+  /* ---------- toolbar ---------- */
+  .toolbar{
+    position:sticky;top:0;z-index:20;
+    background:rgba(242,239,231,.92);
+    -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  .toolbar-inner{
+    display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+    padding:14px 0;
+  }
+  .search{
+    position:relative;flex:1 1 240px;min-width:200px;
+    display:flex;align-items:center;
+  }
+  .search svg{
+    position:absolute;left:14px;width:16px;height:16px;stroke:var(--muted);
+    fill:none;stroke-width:1.6;pointer-events:none;
+  }
+  .search input{
+    width:100%;height:42px;padding:0 38px 0 40px;
+    background:var(--paper-2);border:1px solid var(--line-strong);border-radius:99px;
+    font-size:13.5px;letter-spacing:.01em;
+    outline:none;transition:border-color .2s,box-shadow .2s,background .2s;
+  }
+  .search input::placeholder{color:#9A9384}
+  .search input:focus{
+    border-color:var(--accent);background:#FFFDF8;
+    box-shadow:0 0 0 3px rgba(30,58,43,.12);
+  }
+  .search-clear{
+    position:absolute;right:7px;width:28px;height:28px;border:0;background:none;
+    color:var(--muted);border-radius:50%;font-size:16px;line-height:1;
+    display:none;align-items:center;justify-content:center;
+  }
+  .search-clear:hover{background:var(--line);color:var(--ink)}
+  .search.has-value .search-clear{display:flex}
+
+  .actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .btn{
+    height:38px;padding:0 14px;border-radius:99px;
+    border:1px solid var(--line-strong);background:transparent;color:var(--ink-2);
+    font-size:12.5px;letter-spacing:.02em;white-space:nowrap;
+    display:inline-flex;align-items:center;gap:6px;
+    transition:background .18s,color .18s,border-color .18s,transform .12s,opacity .18s;
+  }
+  .btn:hover:not(:disabled){background:var(--ink);border-color:var(--ink);color:var(--paper-2)}
+  .btn:active:not(:disabled){transform:translateY(1px)}
+  .btn:disabled{opacity:.34;cursor:not-allowed}
+  .btn.accent{background:var(--accent);border-color:var(--accent);color:#F4F1E7}
+  .btn.accent:hover:not(:disabled){background:#152A1E;border-color:#152A1E}
+  .btn.quiet{color:var(--muted);border-color:var(--line)}
+  .btn.quiet:hover:not(:disabled){background:var(--ink);border-color:var(--ink);color:var(--paper-2)}
+  .btn .kbd{
+    font-size:10px;letter-spacing:.1em;color:var(--muted);
+    border:1px solid var(--line);border-radius:4px;padding:0 4px;line-height:15px;
+  }
+  .btn:hover:not(:disabled) .kbd{color:rgba(250,248,242,.6);border-color:rgba(250,248,242,.3)}
+  .divider{width:1px;height:22px;background:var(--line);flex:0 0 auto}
+
+  /* ---------- list ---------- */
+  .list-meta{
+    display:flex;align-items:baseline;justify-content:space-between;gap:16px;
+    padding:26px 4px 10px;
+    font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);
+  }
+  .list-meta .count{font-variant-numeric:tabular-nums;letter-spacing:.1em}
+  .entries{list-style:none;margin:0;padding:0;border-top:1px solid var(--line-strong)}
+  .entry{
+    display:grid;
+    grid-template-columns:46px minmax(170px,238px) 1fr auto;
+    gap:24px;align-items:start;
+    padding:24px 12px 24px 4px;
+    border-bottom:1px solid var(--line);
+    transition:opacity .3s ease,transform .3s ease,background .2s ease;
+  }
+  .entry:hover{background:rgba(255,253,247,.55)}
+  .entry.leaving{opacity:0;transform:translateX(14px);pointer-events:none}
+  .entry.flash{animation:flash 1.4s ease}
+  @keyframes flash{
+    0%{background:rgba(30,58,43,.10)}
+    100%{background:transparent}
+  }
+  .idx{
+    font-family:var(--font-serif);font-size:12px;color:var(--muted);
+    padding-top:8px;letter-spacing:.06em;font-variant-numeric:tabular-nums;
+  }
+  .word-col{min-width:0}
+  .word{
+    margin:0;
+    font-family:var(--font-serif);font-weight:400;
+    font-size:clamp(24px,2.2vw,29px);line-height:1.12;letter-spacing:-.01em;
+    overflow-wrap:anywhere;
+  }
+  .zh{
+    margin:9px 0 0;color:var(--accent);font-size:13.5px;letter-spacing:.02em;
+    transition:opacity .2s;
+  }
+  .use-col{min-width:0;padding-top:2px}
+  .pos{
+    display:inline-block;margin:0 0 7px;
+    font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+    border:1px solid var(--line);border-radius:5px;padding:1px 7px;
+  }
+  .colloc{
+    margin:0;font-family:var(--font-serif);font-size:16.5px;line-height:1.4;color:var(--ink-2);
+    overflow-wrap:anywhere;
+  }
+  .ex{
+    margin:7px 0 0;font-size:12.5px;line-height:1.65;color:var(--muted);
+    overflow-wrap:anywhere;
+  }
+  .master{
+    align-self:center;
+    height:38px;padding:0 16px;border-radius:99px;
+    border:1px solid var(--line-strong);background:var(--paper-2);color:var(--ink-2);
+    font-size:12px;letter-spacing:.04em;white-space:nowrap;
+    display:inline-flex;align-items:center;gap:7px;
+    transition:background .18s,color .18s,border-color .18s,transform .12s;
+  }
+  .master svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:1.8}
+  .master:hover{background:var(--accent);border-color:var(--accent);color:#F4F1E7}
+  .master:active{transform:scale(.97)}
+  .master:focus-visible,.btn:focus-visible,.toggle-details:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+  /* masked translation state */
+  .details{transition:opacity .2s}
+  .details.concealed .zh,
+  .details.concealed .use-body{display:none}
+  .reveal-hint{
+    display:none;align-items:center;gap:8px;
+    margin-top:10px;padding:10px 14px;
+    border:1px dashed var(--line-strong);border-radius:12px;
+    font-size:12px;color:var(--muted);letter-spacing:.06em;
+    background:rgba(255,255,255,.28);
+    width:fit-content;max-width:100%;
+  }
+  .details.concealed .reveal-hint{display:inline-flex}
+  .reveal-hint span.underline{
+    border-bottom:1px solid var(--line-strong);padding-bottom:1px;
+  }
+
+  /* empty states */
+  .empty{
+    padding:64px 8px 80px;text-align:center;
+  }
+  .empty .mark{
+    font-family:var(--font-serif);font-size:38px;color:var(--line-strong);line-height:1;
+  }
+  .empty h3{margin:18px 0 6px;font-family:var(--font-serif);font-weight:400;font-size:24px}
+  .empty p{margin:0;color:var(--muted);font-size:13px}
+  .empty .btn{margin-top:20px}
+
+  .toast{
+    position:fixed;left:50%;bottom:28px;transform:translate(-50%,16px);
+    z-index:50;pointer-events:none;
+    max-width:calc(100vw - 40px);
+    padding:11px 20px;border-radius:99px;
+    background:var(--ink);color:var(--paper-2);
+    font-size:12.5px;letter-spacing:.03em;
+    box-shadow:0 12px 32px rgba(23,21,15,.24);
+    opacity:0;transition:opacity .22s ease,transform .22s ease;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  }
+  .toast.show{opacity:1;transform:translate(-50%,0)}
+
+  footer{
+    display:flex;align-items:center;justify-content:space-between;gap:20px;
+    padding:30px 4px 46px;
+    font-size:11px;letter-spacing:.05em;color:var(--muted);
+  }
+  footer .rule{flex:1;height:1px;background:var(--line)}
+
+  @media (max-width:900px){
+    .masthead{flex-direction:column;align-items:stretch;gap:28px;padding:38px 0 26px}
+    .progress-block{flex:none}
+    .entry{grid-template-columns:32px 1fr auto;grid-template-rows:auto auto;gap:16px}
+    .idx{grid-column:1;grid-row:1}
+    .word-col{grid-column:2;grid-row:1}
+    .use-col{grid-column:2 / 4;grid-row:2;padding-top:0}
+    .master{grid-column:3;grid-row:1;align-self:start;height:36px;padding:0 14px}
+  }
+  @media (max-width:640px){
+    body{font-size:14px}
+    .masthead{padding:30px 0 22px}
+    .lede{font-size:12.5px}
+    h1{font-size:44px}
+    .progress-read strong{font-size:52px}
+    .units{padding:14px 0 14px;gap:6px}
+    .unit-tab{min-width:96px;padding:8px 12px 9px}
+    .unit-tab .u-label{font-size:14.5px}
+    .toolbar-inner{padding:11px 0;gap:9px}
+    .search{flex:1 1 100%}
+    .search input{height:44px}
+    .actions{
+      display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;width:100%;
+    }
+    .actions .divider{display:none}
+    .btn{height:40px;justify-content:center;padding:0 8px;font-size:11.5px}
+    .btn:last-child{grid-column:1 / -1}
+    .list-meta{padding:20px 2px 8px}
+    .entry{padding:20px 4px;gap:12px;grid-template-columns:26px 1fr auto}
+    .idx{padding-top:6px}
+    .word{font-size:26px}
+    .zh{font-size:13px}
+    .colloc{font-size:15.5px}
+    .ex{font-size:12px}
+    .master{height:34px;padding:0 11px;font-size:11.5px}
+    .empty{padding:52px 4px 64px}
+    footer{flex-direction:column;align-items:flex-start;gap:10px;padding-bottom:34px}
+    footer .rule{width:100%}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation-duration:.001ms !important;transition-duration:.001ms !important}
+  }
+  ::selection{background:rgba(30,58,43,.16)}
+</style>
+</head>
+<body>
+<div class="shell">
+  <header class="masthead">
+    <div class="title-wrap">
+      <p class="kicker"><span class="dot"></span>Academic Word List · Sublists 5–10</p>
+      <h1>Sublist <em>Five – Ten</em></h1>
+      <p class="lede">学术词表 330 词 · 六个单元 · 逐词标记掌握进度</p>
+    </div>
+    <div class="progress-block" aria-label="当前单元掌握进度">
+      <div class="progress-label">
+        <span id="progressUnit">Sublist 5</span>
+        <span id="rateText">0%</span>
+      </div>
+      <div class="progress-read">
+        <strong id="masteredNum">0</strong><span id="totalNum">/ 60</span>
+      </div>
+      <div class="bar"><i id="progressBar"></i></div>
+      <div class="progress-note" id="progressNote">剩余 60 词 · 进度自动保存</div>
+    </div>
+  </header>
+
+  <nav class="units" id="units" aria-label="选择单元"></nav>
+
+  <div class="toolbar">
+    <div class="toolbar-inner">
+      <div class="search" id="searchWrap">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><line x1="16" y1="16" x2="21" y2="21"></line></svg>
+        <label class="sr-only" for="searchInput">搜索单词或释义</label>
+        <input id="searchInput" type="search" placeholder="搜索单词、中文或用法…" autocomplete="off" spellcheck="false">
+        <button class="search-clear" id="searchClear" type="button" aria-label="清空搜索">×</button>
+      </div>
+      <div class="actions">
+        <button class="btn" id="toggleDetails" type="button" aria-pressed="false">隐藏释义</button>
+        <button class="btn" id="undoBtn" type="button" disabled>撤销一步</button>
+        <button class="btn" id="restoreBtn" type="button" disabled>恢复本单元</button>
+        <span class="divider" aria-hidden="true"></span>
+        <button class="btn quiet" id="exportLeft" type="button">导出当前 · 剩余</button>
+        <button class="btn quiet" id="exportDone" type="button">导出当前 · 已掌握</button>
+        <button class="btn quiet" id="exportAllLeft" type="button">导出全部 · 剩余</button>
+        <button class="btn accent" id="exportAllDone" type="button">导出全部 · 已掌握</button>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <div class="list-meta">
+      <span id="listLabel">Sublist 5 · 60 词</span>
+      <span class="count" id="resultCount">剩余 60</span>
+    </div>
+    <ul class="entries" id="entries"></ul>
+    <div class="empty" id="empty" hidden>
+      <div class="mark">/</div>
+      <h3 id="emptyTitle">没有匹配的单词</h3>
+      <p id="emptyText">换一个拼写，或清空搜索条件。</p>
+      <button class="btn" id="emptyAction" type="button">清空搜索</button>
+    </div>
+    <footer>
+      <span>数据：AWL Sublist 5–10（zbenglish.net）</span>
+      <span class="rule"></span>
+      <span id="footNote">330 词 · 学习记录仅保存在本机浏览器</span>
+    </footer>
+  </main>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function () {
+  "use strict";
+
+  var UNITS = [{"key":"S5","label":"Sublist 5","words":[{"w":"academy","zh":"学院；学会","usage":"n. ｜ the Academy of Sciences ｜ She studied at a military academy.（军校）"},{"w":"adjust","zh":"调整；适应","usage":"v. ｜ adjust sth to sth ｜ He adjusted the figures for inflation.（调整数据）"},{"w":"alter","zh":"改变；改动","usage":"v. ｜ alter a plan ｜ The new law altered how firms report income.（改变）"},{"w":"amend","zh":"修订；修正","usage":"v. ｜ amend a law / an amendment ｜ Parliament voted to amend the bill.（修订）"},{"w":"aware","zh":"意识到的","usage":"adj. ｜ be aware of ｜ Students should be aware of the risks.（意识到）"},{"w":"capacity","zh":"能力；容量","usage":"n. ｜ capacity to do sth / at full capacity ｜ The lab can test 5,000 samples at full capacity.（满负荷）"},{"w":"challenge","zh":"挑战；质疑","usage":"n./v. ｜ face a challenge / challenge an idea ｜ Rising costs challenge the current model.（构成挑战）"},{"w":"clause","zh":"条款；从句","usage":"n. ｜ a contract clause / a relative clause ｜ The contract has a clause on late payment.（条款）"},{"w":"compound","zh":"化合物；复合的","usage":"n./adj./v. ｜ a chemical compound / compound interest ｜ The problem is compounded by poor data.（加重）"},{"w":"conflict","zh":"冲突；抵触","usage":"n./v. ｜ in conflict with / a conflict of interest ｜ The findings conflict with earlier studies.（相冲突）"},{"w":"consult","zh":"咨询；查阅","usage":"v. ｜ consult sb / consult a dictionary ｜ Consult your tutor before choosing a topic.（请教）"},{"w":"contact","zh":"联系；接触","usage":"n./v. ｜ in contact with / contact sb ｜ Contact the office if you need help.（联系）"},{"w":"decline","zh":"下降；婉拒","usage":"v./n. ｜ decline sharply / a decline in ｜ Sales declined by 12% last year.（下降）"},{"w":"discrete","zh":"离散的；分开的","usage":"adj. ｜ discrete units / discrete categories ｜ The data fall into three discrete groups.（离散的三组）"},{"w":"draft","zh":"草稿；起草","usage":"n./v. ｜ a first draft / draft a report ｜ She drafted the proposal in one afternoon.（起草）"},{"w":"enable","zh":"使能够","usage":"v. ｜ enable sb to do sth ｜ Better funding enabled the team to finish the study.（使能完成）"},{"w":"energy","zh":"能量；能源","usage":"n. ｜ renewable energy / save energy ｜ Solar energy keeps getting cheaper.（能源）"},{"w":"enforce","zh":"执行；强制实施","usage":"v. ｜ enforce a law / enforce rules ｜ It is hard to enforce the new speed limit.（执行）"},{"w":"entity","zh":"实体；机构","usage":"n. ｜ a legal entity / a separate entity ｜ Each branch is a separate legal entity.（实体）"},{"w":"equivalent","zh":"相等的；等同物","usage":"adj./n. ｜ be equivalent to ｜ One hour here is equivalent to two hours there.（相当于）"},{"w":"evolve","zh":"演变；进化","usage":"v. ｜ evolve into / evolve from ｜ The project evolved into a full programme.（演变为）"},{"w":"expand","zh":"扩大；详述","usage":"v. ｜ expand on sth / expand the market ｜ He expanded on this point in Chapter 3.（详述）"},{"w":"expose","zh":"暴露；使接触","usage":"v. ｜ expose sb to sth / be exposed to ｜ Children exposed to two languages learn faster.（接触）"},{"w":"external","zh":"外部的；外来的","usage":"adj. ｜ external factors / an external examiner ｜ External funding covered half the cost.（外部资金）"},{"w":"facilitate","zh":"促进；使便利","usage":"v. ｜ facilitate discussion / facilitate learning ｜ Small groups facilitate open discussion.（促进）"},{"w":"fundamental","zh":"基本的；根本的","usage":"adj./n. ｜ fundamental to / a fundamental change ｜ Trust is fundamental to teamwork.（根本）"},{"w":"generate","zh":"产生；生成","usage":"v. ｜ generate income / generate ideas ｜ The survey generated useful data.（产生）"},{"w":"generation","zh":"一代人；产生","usage":"n. ｜ the next generation / power generation ｜ Each generation faces a different market.（一代人）"},{"w":"image","zh":"形象；图像","usage":"n. ｜ public image / a digital image ｜ The brand's image improved after the campaign.（形象）"},{"w":"liberal","zh":"开明的；自由的","usage":"adj. ｜ liberal views / a liberal education ｜ The paper takes a liberal stance on reform.（开明立场）"},{"w":"licence","zh":"执照；许可证","usage":"n. ｜ a driving licence / under licence ｜ You need a licence to run this service.（执照）"},{"w":"logic","zh":"逻辑；道理","usage":"n. ｜ the logic of / logical ｜ The logic of the argument is unclear.（逻辑）"},{"w":"margin","zh":"差额；页边；利润","usage":"n. ｜ profit margin / by a narrow margin ｜ The team won by a narrow margin.（微弱优势）"},{"w":"medical","zh":"医学的；医疗的","usage":"adj. ｜ medical care / medical research ｜ The study needs medical approval.（医学审批）"},{"w":"mental","zh":"心理的；精神的","usage":"adj. ｜ mental health / mental effort ｜ Mental health services are underfunded.（心理）"},{"w":"modify","zh":"修改；调整","usage":"v. ｜ modify a plan / genetically modified ｜ We modified the design after testing.（修改）"},{"w":"monitor","zh":"监测；显示器","usage":"n./v. ｜ monitor progress / a computer monitor ｜ Teachers monitor progress every term.（监测）"},{"w":"network","zh":"网络；人脉","usage":"n./v. ｜ a social network / network with ｜ The survey reached a wide network of schools.（网络）"},{"w":"notion","zh":"观念；想法","usage":"n. ｜ the notion that ｜ The notion that price equals quality is false.（观念）"},{"w":"objective","zh":"目标；客观的","usage":"n./adj. ｜ achieve an objective / an objective view ｜ Each report states its objectives clearly.（目标）"},{"w":"orient","zh":"使适应；定方向","usage":"v. ｜ orient sth towards / orientation ｜ The course is oriented towards beginners.（面向）"},{"w":"perspective","zh":"视角；观点","usage":"n. ｜ from the perspective of / a fresh perspective ｜ From a historical perspective, the change is small.（视角）"},{"w":"precise","zh":"精确的；准确的","usage":"adj. ｜ precise figures / to be precise ｜ We need precise data, not estimates.（精确数据）"},{"w":"prime","zh":"首要的；全盛期","usage":"adj./n. ｜ a prime example / prime minister ｜ Cost is the prime concern for students.（首要）"},{"w":"psychology","zh":"心理学；心理","usage":"n. ｜ social psychology / a degree in psychology ｜ The study draws on social psychology.（心理学）"},{"w":"pursue","zh":"追求；从事","usage":"v. ｜ pursue a career / pursue a goal ｜ She pursued a career in research.（从事）"},{"w":"ratio","zh":"比率；比例","usage":"n. ｜ the ratio of A to B ｜ The ratio of students to staff is 20 to 1.（比例）"},{"w":"reject","zh":"拒绝；否决","usage":"v. ｜ reject a proposal / be rejected ｜ The journal rejected the paper without review.（拒稿）"},{"w":"revenue","zh":"收入；税收","usage":"n. ｜ tax revenue / revenue growth ｜ Advertising brings in most of the revenue.（收入）"},{"w":"stable","zh":"稳定的；牢固的","usage":"adj. ｜ a stable system / remain stable ｜ Prices stayed stable for six months.（稳定）"},{"w":"style","zh":"风格；样式","usage":"n. ｜ a writing style / in the style of ｜ The report follows a formal style.（风格）"},{"w":"substitute","zh":"代替；替代品","usage":"v./n. ｜ substitute A for B / a substitute for ｜ You can substitute oil for butter.（替代）"},{"w":"sustain","zh":"维持；支撑","usage":"v. ｜ sustain growth / sustainable ｜ Can the system sustain this pace of growth?（维持）"},{"w":"symbol","zh":"符号；象征","usage":"n. ｜ a symbol of / a status symbol ｜ The dove is a symbol of peace.（象征）"},{"w":"target","zh":"目标；以…为目标","usage":"n./v. ｜ meet a target / target a group ｜ The campaign targets young voters.（瞄准）"},{"w":"transit","zh":"运输；过境","usage":"n. ｜ public transit / in transit ｜ The goods were damaged in transit.（运输途中）"},{"w":"trend","zh":"趋势；倾向","usage":"n. ｜ a downward trend / a trend towards ｜ There is a trend towards online study.（趋势）"},{"w":"version","zh":"版本；说法","usage":"n. ｜ a new version / a different version ｜ The final version will appear in May.（版本）"},{"w":"welfare","zh":"福利；福祉","usage":"n. ｜ social welfare / animal welfare ｜ The state provides welfare for the unemployed.（福利）"},{"w":"whereas","zh":"然而；鉴于","usage":"conj. ｜ A, whereas B ｜ The north is wet, whereas the south is dry.（对比）"}]},{"key":"S6","label":"Sublist 6","words":[{"w":"abstract","zh":"抽象的；摘要","usage":"adj./n./v. ｜ an abstract idea / write an abstract ｜ The paper begins with a short abstract.（摘要）"},{"w":"accurate","zh":"准确的；精确的","usage":"adj. ｜ accurate data / be accurate in ｜ The forecast was accurate to within 2%.（准确的）"},{"w":"acknowledge","zh":"承认；致谢","usage":"v. ｜ acknowledge a problem / be acknowledged as ｜ The report acknowledges several limits.（承认）"},{"w":"aggregate","zh":"总计的；合计","usage":"n./adj./v. ｜ the aggregate of / aggregate demand ｜ Aggregate demand fell last quarter.（总需求）"},{"w":"allocate","zh":"分配；拨给","usage":"v. ｜ allocate resources to / allocate funds ｜ The council allocated funds to three schools.（分配）"},{"w":"assign","zh":"分派；指派","usage":"v. ｜ assign a task / be assigned to ｜ Each student is assigned a supervisor.（指派）"},{"w":"attach","zh":"附上；系上","usage":"v. ｜ attach sth to / be attached to ｜ Please attach the file to your email.（附上）"},{"w":"author","zh":"作者；著者","usage":"n./v. ｜ the author of / co-author ｜ She is the author of two textbooks.（作者）"},{"w":"bond","zh":"纽带；债券","usage":"n./v. ｜ a strong bond / government bonds ｜ Shared meals create a bond within the team.（纽带）"},{"w":"brief","zh":"简短的；摘要","usage":"adj./n./v. ｜ a brief report / in brief ｜ He gave a brief summary of the findings.（简短）"},{"w":"capable","zh":"有能力的；能够的","usage":"adj. ｜ be capable of ｜ The system is capable of handling 10,000 users.（能够）"},{"w":"cite","zh":"引用；引证","usage":"v. ｜ cite a study / be cited in ｜ The paper cites three earlier surveys.（引用）"},{"w":"cooperate","zh":"合作；配合","usage":"v. ｜ cooperate with sb / cooperate on ｜ The two labs cooperated on the trial.（合作）"},{"w":"discriminate","zh":"区分；歧视","usage":"v. ｜ discriminate between A and B / discriminate against ｜ It is illegal to discriminate by age.（歧视）"},{"w":"display","zh":"展示；显示","usage":"v./n. ｜ display data / on display ｜ The chart displays yearly changes.（显示）"},{"w":"diverse","zh":"多样的；不同的","usage":"adj. ｜ a diverse range / culturally diverse ｜ The sample is culturally diverse.（多样）"},{"w":"domain","zh":"领域；域名","usage":"n. ｜ in the domain of / a web domain ｜ This topic lies outside my domain.（领域）"},{"w":"edit","zh":"编辑；校订","usage":"v./n. ｜ edit a text / make an edit ｜ She edited the report before submission.（编辑）"},{"w":"enhance","zh":"提升；增强","usage":"v. ｜ enhance quality / enhance the value of ｜ Lighting can enhance the mood of a room.（提升）"},{"w":"estate","zh":"房地产；庄园","usage":"n. ｜ real estate / an estate agent ｜ Real estate prices rose again.（房地产）"},{"w":"exceed","zh":"超过；超出","usage":"v. ｜ exceed a limit / exceed expectations ｜ Costs exceeded the original budget.（超过）"},{"w":"expert","zh":"专家；熟练的","usage":"n./adj. ｜ an expert in / expert advice ｜ She is an expert in water policy.（专家）"},{"w":"explicit","zh":"明确的；直言的","usage":"adj. ｜ explicit instructions / be explicit about ｜ The rules are explicit about deadlines.（明确）"},{"w":"federal","zh":"联邦的","usage":"adj. ｜ federal funding / federal law ｜ Federal funding covers the scheme.（联邦）"},{"w":"fee","zh":"费用；收费","usage":"n. ｜ a tuition fee / charge a fee ｜ The course fee includes materials.（费用）"},{"w":"flexible","zh":"灵活的；可弯曲的","usage":"adj. ｜ flexible hours / remain flexible ｜ Flexible hours suit working parents.（灵活）"},{"w":"furthermore","zh":"此外；而且","usage":"adv. ｜ Furthermore, ... ｜ Furthermore, the sample was small.（此外）"},{"w":"gender","zh":"性别","usage":"n. ｜ gender equality / the gender gap ｜ The gender gap in pay has narrowed.（性别）"},{"w":"ignorant","zh":"无知的；不了解的","usage":"adj. ｜ be ignorant of ｜ Many voters are ignorant of the details.（不了解）"},{"w":"incentive","zh":"激励；动力","usage":"n. ｜ an incentive to do / tax incentives ｜ Bonuses are an incentive to work harder.（激励）"},{"w":"incidence","zh":"发生率；发病率","usage":"n. ｜ the incidence of ｜ The incidence of the disease has fallen.（发病率）"},{"w":"incorporate","zh":"纳入；合并","usage":"v. ｜ incorporate sth into ｜ We incorporated feedback into the design.（纳入）"},{"w":"index","zh":"索引；指数","usage":"n./v. ｜ a price index / index sth ｜ The book has a detailed index.（索引）"},{"w":"inhibit","zh":"抑制；阻碍","usage":"v. ｜ inhibit growth / inhibit sb from ｜ High costs inhibit small firms from innovating.（抑制）"},{"w":"initiate","zh":"发起；开始","usage":"v. ｜ initiate a project / initiate talks ｜ The city initiated a recycling scheme.（发起）"},{"w":"input","zh":"投入；输入；意见","usage":"n./v. ｜ input from / user input ｜ We need input from local residents.（意见）"},{"w":"instruct","zh":"指导；指示","usage":"v. ｜ instruct sb to do / instruct a class ｜ She instructs first-year students.（教授）"},{"w":"intelligent","zh":"智能的；聪明的","usage":"adj. ｜ an intelligent system / highly intelligent ｜ The building uses intelligent lighting.（智能）"},{"w":"interval","zh":"间隔；间歇","usage":"n. ｜ at intervals / a time interval ｜ Tests were run at hourly intervals.（间隔）"},{"w":"lecture","zh":"讲座；讲授","usage":"n./v. ｜ give a lecture / lecture on ｜ He lectures on modern history.（讲授）"},{"w":"migrate","zh":"迁移；迁徙","usage":"v. ｜ migrate to / migrate from ｜ Many workers migrated to the coast.（迁移）"},{"w":"minimum","zh":"最小的；最低限度","usage":"adj./n. ｜ a minimum of / minimum wage ｜ Keep noise to a minimum.（最低）"},{"w":"ministry","zh":"部；政府部门","usage":"n. ｜ the Ministry of Education ｜ The ministry funds rural schools.（部）"},{"w":"motive","zh":"动机；目的","usage":"n. ｜ a motive for ｜ Police found no clear motive.（动机）"},{"w":"neutral","zh":"中立的；中性的","usage":"adj. ｜ remain neutral / a neutral tone ｜ The chair stayed neutral in the debate.（中立）"},{"w":"nevertheless","zh":"尽管如此；然而","usage":"adv. ｜ Nevertheless, ... ｜ The data are old; nevertheless, they are useful.（尽管如此）"},{"w":"overseas","zh":"海外的；在海外","usage":"adj./adv. ｜ overseas students / go overseas ｜ Overseas students pay higher fees.（海外）"},{"w":"precede","zh":"先于；在…之前","usage":"v. ｜ precede sth / be preceded by ｜ A short introduction precedes each chapter.（先于）"},{"w":"presume","zh":"推测；假定","usage":"v. ｜ presume that / be presumed to ｜ I presume the meeting is still on.（推测）"},{"w":"rational","zh":"理性的；合理的","usage":"adj. ｜ a rational choice / a rational explanation ｜ There is a rational case for reform.（理性的）"},{"w":"recover","zh":"恢复；收回","usage":"v. ｜ recover from / recover costs ｜ The market recovered within a year.（恢复）"},{"w":"reveal","zh":"揭示；透露","usage":"v. ｜ reveal that / reveal a pattern ｜ The survey revealed a lack of trust.（揭示）"},{"w":"scope","zh":"范围；余地","usage":"n. ｜ the scope of / beyond the scope of ｜ This question is beyond the scope of the study.（范围）"},{"w":"subsidy","zh":"补贴；津贴","usage":"n. ｜ a government subsidy / farm subsidies ｜ The subsidy keeps fares low.（补贴）"},{"w":"tape","zh":"磁带；胶带","usage":"n./v. ｜ adhesive tape / tape a box ｜ She taped the label to the parcel.（胶带）"},{"w":"trace","zh":"追踪；痕迹","usage":"v./n. ｜ trace sth to / without a trace ｜ The problem can be traced to poor data.（追溯）"},{"w":"transform","zh":"转变；改造","usage":"v. ｜ transform sth into ｜ The internet transformed how we read.（改变）"},{"w":"transport","zh":"运输；交通","usage":"n./v. ｜ public transport / transport goods ｜ The city needs better public transport.（交通）"},{"w":"underlie","zh":"构成…的基础；潜在","usage":"v. ｜ underlie the problem ｜ These assumptions underlie the model.（构成基础）"},{"w":"utilize","zh":"利用；使用","usage":"v. ｜ utilize resources / utilize space ｜ The design utilizes natural light.（利用）"}]},{"key":"S7","label":"Sublist 7","words":[{"w":"adapt","zh":"适应；改编","usage":"v. ｜ adapt to / adapt sth for ｜ Children adapt quickly to new schools.（适应）"},{"w":"adult","zh":"成年人；成年的","usage":"n./adj. ｜ an adult / adult education ｜ The course is aimed at adult learners.（成人）"},{"w":"advocate","zh":"提倡；拥护者","usage":"v./n. ｜ advocate reform / an advocate of ｜ She advocates shorter working hours.（主张）"},{"w":"aid","zh":"援助；帮助","usage":"n./v. ｜ foreign aid / aid sb in ｜ Aid arrived two days after the flood.（援助）"},{"w":"channel","zh":"渠道；频道；引导","usage":"n./v. ｜ a TV channel / channel funds into ｜ More funds were channelled into research.（引导）"},{"w":"chemical","zh":"化学的；化学品","usage":"n./adj. ｜ a chemical reaction / chemical waste ｜ The plant stores chemical waste on site.（化学品）"},{"w":"classic","zh":"经典的；典型例子","usage":"adj./n. ｜ a classic example / a classic study ｜ This is a classic case of overfitting.（经典）"},{"w":"comprehensive","zh":"全面的；综合的","usage":"adj. ｜ a comprehensive review / comprehensive data ｜ The report offers a comprehensive review.（全面）"},{"w":"comprise","zh":"包含；由…组成","usage":"v. ｜ be comprised of / comprise ｜ The team comprises six researchers.（由…组成）"},{"w":"confirm","zh":"确认；证实","usage":"v. ｜ confirm that / confirm a booking ｜ Later tests confirmed the result.（确认）"},{"w":"contrary","zh":"相反的；反面","usage":"adj./n. ｜ contrary to / on the contrary ｜ Contrary to forecasts, sales rose.（相反）"},{"w":"convert","zh":"转换；改造","usage":"v. ｜ convert A into B / convert to ｜ The barn was converted into a studio.（改造）"},{"w":"couple","zh":"一对；几个；结合","usage":"n./v. ｜ a couple of / be coupled with ｜ Growth is coupled with rising inequality.（伴随）"},{"w":"decade","zh":"十年","usage":"n. ｜ over the past decade ｜ Prices have doubled over the past decade.（十年）"},{"w":"definite","zh":"明确的；确定的","usage":"adj. ｜ a definite answer / definite plans ｜ We still have no definite answer.（明确）"},{"w":"deny","zh":"否认；拒绝给予","usage":"v. ｜ deny a claim / be denied access ｜ The company denied the charges.（否认）"},{"w":"differentiate","zh":"区分；使不同","usage":"v. ｜ differentiate between / differentiate sth from ｜ It is hard to differentiate the two brands.（区分）"},{"w":"dispose","zh":"处理；处置","usage":"v. ｜ dispose of waste ｜ The hospital disposes of waste safely.（处理）"},{"w":"dynamic","zh":"动态的；有活力的","usage":"adj. ｜ a dynamic market / dynamic systems ｜ The market is highly dynamic.（动态）"},{"w":"eliminate","zh":"消除；淘汰","usage":"v. ｜ eliminate a risk / be eliminated ｜ The new filter eliminates most errors.（消除）"},{"w":"empirical","zh":"实证的；经验主义的","usage":"adj. ｜ empirical evidence / empirical research ｜ The claim lacks empirical support.（实证）"},{"w":"equip","zh":"装备；使具备","usage":"v. ｜ equip sb with / be equipped to ｜ The lab is equipped with new microscopes.（配备）"},{"w":"extract","zh":"提取；摘录","usage":"v./n. ｜ extract data / an extract from ｜ They extracted DNA from the sample.（提取）"},{"w":"file","zh":"文件；归档","usage":"n./v. ｜ a PDF file / file a claim ｜ Please upload the file by Friday.（文件）"},{"w":"finite","zh":"有限的","usage":"adj. ｜ finite resources / a finite number ｜ The planet has finite resources.（有限）"},{"w":"foundation","zh":"基础；基金会","usage":"n. ｜ a solid foundation / a research foundation ｜ Trust is the foundation of the team.（基础）"},{"w":"globe","zh":"地球；全球","usage":"n. ｜ around the globe / across the globe ｜ The product is sold around the globe.（全球）"},{"w":"grade","zh":"等级；评分","usage":"n./v. ｜ a grade / grade a paper ｜ She graded 120 exam papers.（评分）"},{"w":"guarantee","zh":"保证；担保","usage":"v./n. ｜ guarantee quality / a money-back guarantee ｜ Hard work does not guarantee success.（保证）"},{"w":"hierarchy","zh":"等级制度；层级","usage":"n. ｜ a social hierarchy / in the hierarchy ｜ The firm has a flat hierarchy.（层级）"},{"w":"identical","zh":"完全相同的","usage":"adj. ｜ be identical to / identical twins ｜ The two samples are identical.（相同）"},{"w":"ideology","zh":"意识形态；思想体系","usage":"n. ｜ a political ideology ｜ The party's ideology has softened.（意识形态）"},{"w":"infer","zh":"推断；推论","usage":"v. ｜ infer sth from ｜ We can infer the cause from the pattern.（推断）"},{"w":"innovate","zh":"创新；革新","usage":"v. ｜ innovate in / innovate new products ｜ Firms must innovate to stay competitive.（创新）"},{"w":"insert","zh":"插入；嵌入","usage":"v. ｜ insert sth into ｜ Insert the card into the reader.（插入）"},{"w":"intervene","zh":"干预；介入","usage":"v. ｜ intervene in / intervene to ｜ The state intervened to stabilize prices.（干预）"},{"w":"isolate","zh":"隔离；孤立","usage":"v. ｜ isolate sb from / be isolated ｜ The village was isolated by the flood.（隔离）"},{"w":"media","zh":"媒体；媒介","usage":"n. ｜ social media / the mass media ｜ The story spread quickly on social media.（媒体）"},{"w":"mode","zh":"模式；方式","usage":"n. ｜ a mode of transport / a mode of study ｜ Cycling is a healthy mode of transport.（方式）"},{"w":"paradigm","zh":"范式；典范","usage":"n. ｜ a paradigm shift / a research paradigm ｜ The discovery caused a paradigm shift.（范式）"},{"w":"phenomenon","zh":"现象","usage":"n. ｜ a social phenomenon / natural phenomena ｜ Online shopping is a global phenomenon.（现象）"},{"w":"priority","zh":"优先事项；优先权","usage":"n. ｜ a top priority / give priority to ｜ Safety is our top priority.（优先）"},{"w":"prohibit","zh":"禁止；阻止","usage":"v. ｜ prohibit sb from doing ｜ The law prohibits smoking indoors.（禁止）"},{"w":"publication","zh":"出版；出版物","usage":"n. ｜ a monthly publication / the publication of ｜ The publication of the report was delayed.（出版）"},{"w":"quote","zh":"引用；报价","usage":"v./n. ｜ quote a source / a quote for ｜ She quoted a passage from the novel.（引用）"},{"w":"release","zh":"释放；发布","usage":"v./n. ｜ release data / a press release ｜ The agency released the figures on Friday.（发布）"},{"w":"reverse","zh":"反转；相反的","usage":"v./adj. ｜ reverse a trend / the reverse ｜ The policy reversed the decline in sales.（扭转）"},{"w":"simulate","zh":"模拟；假装","usage":"v. ｜ simulate conditions / a simulated test ｜ The model simulates coastal flooding.（模拟）"},{"w":"sole","zh":"唯一的；独有的","usage":"adj. ｜ the sole reason / sole owner ｜ Price was not the sole factor.（唯一）"},{"w":"somewhat","zh":"有点；稍微","usage":"adv. ｜ somewhat higher / somewhat surprising ｜ Results were somewhat better than expected.（略微）"},{"w":"submit","zh":"提交；屈服","usage":"v. ｜ submit a paper / submit to ｜ Students submit work online.（提交）"},{"w":"successor","zh":"继任者；后继","usage":"n. ｜ the successor to ｜ She is the successor to the former director.（继任者）"},{"w":"survive","zh":"幸存；挺过","usage":"v. ｜ survive a crisis / survive on ｜ Many small shops did not survive the recession.（挺过）"},{"w":"thesis","zh":"论文；论点","usage":"n. ｜ a doctoral thesis / the main thesis ｜ He is writing a thesis on migration.（论文）"},{"w":"topic","zh":"主题；话题","usage":"n. ｜ a topic of / on the topic of ｜ The topic attracted little research.（主题）"},{"w":"transmit","zh":"传播；传输","usage":"v. ｜ transmit data / transmit a disease ｜ The virus transmits easily indoors.（传播）"},{"w":"ultimate","zh":"最终的；极端的","usage":"adj. ｜ the ultimate goal / ultimate responsibility ｜ The ultimate aim is zero waste.（最终）"},{"w":"unique","zh":"独特的；唯一的","usage":"adj. ｜ a unique feature / unique to ｜ Each region has a unique culture.（独特）"},{"w":"visible","zh":"可见的；明显的","usage":"adj. ｜ clearly visible / visible progress ｜ Progress was visible within weeks.（可见）"},{"w":"voluntary","zh":"自愿的；志愿的","usage":"adj. ｜ voluntary work / voluntary participation ｜ Participation is entirely voluntary.（自愿）"}]},{"key":"S8","label":"Sublist 8","words":[{"w":"abandon","zh":"抛弃；放弃","usage":"v. ｜ abandon a plan / abandon ship ｜ They abandoned the project after the cuts.（放弃）"},{"w":"accompany","zh":"伴随；陪同","usage":"v. ｜ be accompanied by ｜ The report is accompanied by raw data.（伴随）"},{"w":"accumulate","zh":"积累；堆积","usage":"v. ｜ accumulate evidence / accumulate wealth ｜ Dust accumulated on the shelves.（积累）"},{"w":"ambiguous","zh":"模糊的；歧义的","usage":"adj. ｜ ambiguous results / an ambiguous answer ｜ The wording is ambiguous and needs revision.（模糊）"},{"w":"append","zh":"附加；增补","usage":"v. ｜ append sth to ｜ Append the table to the final draft.（附加）"},{"w":"appreciate","zh":"欣赏；理解；感激","usage":"v. ｜ appreciate the value of / appreciate that ｜ I appreciate why the delay happened.（理解）"},{"w":"arbitrary","zh":"任意的；武断的","usage":"adj. ｜ an arbitrary decision / arbitrary rules ｜ The cut-off date seems arbitrary.（武断）"},{"w":"automate","zh":"使自动化","usage":"v. ｜ automate a process / fully automated ｜ The warehouse is fully automated.（自动化）"},{"w":"bias","zh":"偏见；偏向","usage":"n./v. ｜ a bias against / a biased sample ｜ The sample shows a clear bias.（偏见）"},{"w":"chart","zh":"图表；绘制","usage":"n./v. ｜ a bar chart / chart the changes ｜ The chart shows monthly sales.（图表）"},{"w":"clarify","zh":"阐明；澄清","usage":"v. ｜ clarify a point / clarify that ｜ Could you clarify the second point?（澄清）"},{"w":"commodity","zh":"商品；大宗商品","usage":"n. ｜ a commodity market / basic commodities ｜ Food is becoming a global commodity.（商品）"},{"w":"complement","zh":"补充；相配","usage":"v./n. ｜ complement each other / a complement to ｜ The two studies complement each other.（补充）"},{"w":"conform","zh":"遵从；符合","usage":"v. ｜ conform to / conform with standards ｜ All units conform to safety standards.（符合）"},{"w":"contemporary","zh":"当代的；同时期的","usage":"adj. ｜ contemporary art / contemporary issues ｜ The gallery shows contemporary art.（当代）"},{"w":"contradict","zh":"反驳；与…矛盾","usage":"v. ｜ contradict a claim / contradict each other ｜ The new evidence contradicts the theory.（相矛盾）"},{"w":"crucial","zh":"关键的；至关重要的","usage":"adj. ｜ a crucial factor / be crucial to ｜ Timing is crucial to the experiment.（关键）"},{"w":"currency","zh":"货币；流通","usage":"n. ｜ foreign currency / a strong currency ｜ The local currency lost value.（货币）"},{"w":"denote","zh":"表示；标志","usage":"v. ｜ denote sth / a term denoting ｜ Red lines denote areas of risk.（表示）"},{"w":"detect","zh":"检测；察觉","usage":"v. ｜ detect a change / detect errors ｜ The sensor detects smoke within seconds.（检测）"},{"w":"deviate","zh":"偏离；违背","usage":"v. ｜ deviate from ｜ The results deviate from the model.（偏离）"},{"w":"displace","zh":"取代；迫使离开","usage":"v. ｜ displace workers / be displaced by ｜ Machines displaced many manual jobs.（取代）"},{"w":"drama","zh":"戏剧；戏剧性事件","usage":"n. ｜ a drama series / the drama of ｜ The trial had all the drama of a film.（戏剧）"},{"w":"eventual","zh":"最终的；最后的","usage":"adj. ｜ eventual success / the eventual outcome ｜ The eventual cost was twice the estimate.（最终）"},{"w":"exhibit","zh":"展出；表现出","usage":"v./n. ｜ exhibit behaviour / an exhibit ｜ The museum exhibits local crafts.（展出）"},{"w":"exploit","zh":"利用；剥削","usage":"v. ｜ exploit resources / exploit workers ｜ Firms exploit cheap labour abroad.（利用）"},{"w":"fluctuate","zh":"波动；起伏","usage":"v. ｜ fluctuate between / prices fluctuate ｜ Prices fluctuated wildly last year.（波动）"},{"w":"guideline","zh":"指导方针；准则","usage":"n. ｜ follow guidelines / safety guidelines ｜ The team follows national guidelines.（指南）"},{"w":"highlight","zh":"强调；亮点","usage":"v./n. ｜ highlight a problem / the highlight of ｜ The report highlights three risks.（强调）"},{"w":"implicit","zh":"隐含的；含蓄的","usage":"adj. ｜ implicit in / an implicit assumption ｜ There is an implicit assumption of growth.（隐含）"},{"w":"induce","zh":"引起；诱导","usage":"v. ｜ induce change / induce sb to do ｜ Stress can induce sleep problems.（引起）"},{"w":"inevitable","zh":"不可避免的","usage":"adj. ｜ an inevitable result / it is inevitable that ｜ Some delay was inevitable.（不可避免）"},{"w":"infrastructure","zh":"基础设施","usage":"n. ｜ transport infrastructure / infrastructure investment ｜ Rural infrastructure needs investment.（基础设施）"},{"w":"inspect","zh":"检查；视察","usage":"v. ｜ inspect sth for ｜ Engineers inspect the bridge each year.（检查）"},{"w":"intense","zh":"强烈的；紧张的","usage":"adj. ｜ intense pressure / intense heat ｜ The debate became intense.（强烈）"},{"w":"manipulate","zh":"操纵；操控","usage":"v. ｜ manipulate data / manipulate public opinion ｜ The figures had been manipulated.（操纵）"},{"w":"minimise","zh":"使最小化；降低到最低","usage":"v. ｜ minimise risk / minimise costs ｜ Careful design minimises waste.（最小化）"},{"w":"nuclear","zh":"核的；核能的","usage":"adj. ｜ nuclear energy / nuclear weapons ｜ Nuclear power supplies a fifth of the grid.（核能）"},{"w":"offset","zh":"抵消；补偿","usage":"v. ｜ offset the cost / be offset by ｜ Savings offset the rise in fees.（抵消）"},{"w":"paragraph","zh":"段落","usage":"n. ｜ the first paragraph / a short paragraph ｜ Read the first paragraph again.（段落）"},{"w":"plus","zh":"加；有利因素","usage":"prep./n. ｜ plus tax / a real plus ｜ The extra day is a real plus.（优势）"},{"w":"practitioner","zh":"从业者；实践者","usage":"n. ｜ a medical practitioner / reflective practice ｜ The guide is written for practitioners.（从业者）"},{"w":"predominant","zh":"主要的；占主导的","usage":"adj. ｜ the predominant view / the predominant colour ｜ Grey is the predominant colour.（主要）"},{"w":"prospect","zh":"前景；可能性","usage":"n. ｜ the prospect of / job prospects ｜ Graduates face poor job prospects.（前景）"},{"w":"radical","zh":"激进的；根本的","usage":"adj./n. ｜ radical change / a radical idea ｜ The plan needs radical change.（根本）"},{"w":"random","zh":"随机的；任意的","usage":"adj. ｜ a random sample / at random ｜ Names were chosen at random.（随机）"},{"w":"reinforce","zh":"加强；强化","usage":"v. ｜ reinforce a view / reinforce the effect ｜ The results reinforce earlier findings.（加强）"},{"w":"restore","zh":"恢复；修复","usage":"v. ｜ restore confidence / restore order ｜ The building was restored in 2010.（修复）"},{"w":"revise","zh":"修订；复习","usage":"v. ｜ revise a draft / revise for exams ｜ She revised the draft three times.（修订）"},{"w":"schedule","zh":"日程；安排","usage":"n./v. ｜ on schedule / schedule a meeting ｜ The project is behind schedule.（进度）"},{"w":"tense","zh":"紧张的；时态","usage":"adj./n. ｜ a tense situation / the past tense ｜ The room fell silent and tense.（紧张）"},{"w":"terminate","zh":"终止；结束","usage":"v. ｜ terminate a contract / terminate a process ｜ The contract was terminated early.（终止）"},{"w":"theme","zh":"主题；主旨","usage":"n. ｜ the main theme / a theme park ｜ Loss is the main theme of the novel.（主题）"},{"w":"thereby","zh":"从而；由此","usage":"adv. ｜ ..., thereby doing ｜ They cut costs, thereby raising profits.（从而）"},{"w":"uniform","zh":"统一的；制服","usage":"adj./n. ｜ uniform standards / a school uniform ｜ The city has uniform building rules.（统一）"},{"w":"vehicle","zh":"车辆；工具","usage":"n. ｜ a motor vehicle / a vehicle for ｜ The magazine is a vehicle for new ideas.（工具）"},{"w":"via","zh":"经由；通过","usage":"prep. ｜ via email / via a link ｜ We met via a mutual friend.（通过）"},{"w":"virtual","zh":"虚拟的；实际上的","usage":"adj. ｜ virtual reality / a virtual meeting ｜ The team holds virtual meetings.（虚拟）"},{"w":"visual","zh":"视觉的；视觉资料","usage":"adj. ｜ visual aids / visual impact ｜ The report uses strong visual aids.（视觉）"},{"w":"widespread","zh":"广泛的；普遍的","usage":"adj. ｜ widespread support / widespread use ｜ The app gained widespread use.（广泛）"}]},{"key":"S9","label":"Sublist 9","words":[{"w":"accommodate","zh":"容纳；适应；提供住宿","usage":"v. ｜ accommodate 200 people / accommodate needs ｜ The hall accommodates 300 guests.（容纳）"},{"w":"analogy","zh":"类比；类推","usage":"n. ｜ by analogy / draw an analogy ｜ He drew an analogy with the brain.（类比）"},{"w":"anticipate","zh":"预期；预料","usage":"v. ｜ anticipate problems / as anticipated ｜ We anticipate strong demand.（预期）"},{"w":"assure","zh":"保证；使确信","usage":"v. ｜ assure sb that ｜ The bank assured customers of its safety.（保证）"},{"w":"attain","zh":"达到；获得","usage":"v. ｜ attain a goal / attain a standard ｜ Few students attain that level.（达到）"},{"w":"behalf","zh":"代表；为了","usage":"n. ｜ on behalf of ｜ She spoke on behalf of the class.（代表）"},{"w":"bulk","zh":"大部分；体积","usage":"n. ｜ the bulk of / in bulk ｜ The bulk of the cost is labour.（大部分）"},{"w":"cease","zh":"停止；终止","usage":"v. ｜ cease to exist / cease work ｜ The factory ceased production in May.（停止）"},{"w":"coherent","zh":"连贯的；一致的","usage":"adj. ｜ a coherent argument / coherent policy ｜ The essay lacks a coherent argument.（连贯）"},{"w":"coincide","zh":"同时发生；一致","usage":"v. ｜ coincide with ｜ The launch coincided with the holidays.（同时）"},{"w":"commence","zh":"开始；着手","usage":"v. ｜ commence work / commence in ｜ Work will commence in April.（开始）"},{"w":"compatible","zh":"兼容的；相容的","usage":"adj. ｜ be compatible with ｜ The software is compatible with most phones.（兼容）"},{"w":"concurrent","zh":"同时进行的","usage":"adj. ｜ concurrent sessions / concurrent projects ｜ The conference runs concurrent sessions.（并行）"},{"w":"confine","zh":"限制；局限于","usage":"v. ｜ confine sb to / be confined to ｜ Discussion was confined to one topic.（局限于）"},{"w":"controversy","zh":"争议；争论","usage":"n. ｜ cause controversy / a controversy over ｜ The plan caused public controversy.（争议）"},{"w":"converse","zh":"相反的；交谈","usage":"adj./v. ｜ the converse is true / converse with ｜ The converse is also true.（相反）"},{"w":"device","zh":"装置；设备","usage":"n. ｜ a mobile device / a measuring device ｜ The device records temperature hourly.（装置）"},{"w":"devote","zh":"投入；献身","usage":"v. ｜ devote time to / be devoted to ｜ She devotes her weekends to volunteering.（投入）"},{"w":"diminish","zh":"减少；削弱","usage":"v. ｜ diminish over time / diminishing returns ｜ Interest diminished after the first week.（减弱）"},{"w":"distort","zh":"扭曲；歪曲","usage":"v. ｜ distort the facts / a distorted image ｜ Poor sampling distorts the results.（扭曲）"},{"w":"duration","zh":"持续时间","usage":"n. ｜ for the duration of / a short duration ｜ The course runs for the duration of the term.（持续时间）"},{"w":"erode","zh":"侵蚀；削弱","usage":"v. ｜ erode trust / erode the coast ｜ Repeated delays eroded public trust.（侵蚀）"},{"w":"ethic","zh":"道德准则；伦理","usage":"n. ｜ a work ethic / research ethics ｜ The study follows strict research ethics.（伦理）"},{"w":"format","zh":"格式；格式化","usage":"n./v. ｜ a standard format / format a document ｜ Submit the essay in PDF format.（格式）"},{"w":"found","zh":"建立；创办","usage":"v. ｜ found a company / be founded on ｜ The school was founded in 1920.（创立）"},{"w":"inherent","zh":"固有的；内在的","usage":"adj. ｜ inherent in / an inherent risk ｜ Risk is inherent in any investment.（固有）"},{"w":"insight","zh":"洞察；见解","usage":"n. ｜ an insight into / gain insight ｜ The interviews gave insight into daily life.（洞察）"},{"w":"integral","zh":"不可或缺的；整体的","usage":"adj. ｜ integral to / an integral part ｜ Practice is integral to learning.（必需）"},{"w":"intermediate","zh":"中级的；中间阶段","usage":"adj. ｜ an intermediate level / intermediate steps ｜ The class is for intermediate learners.（中级）"},{"w":"manual","zh":"手册；手工的","usage":"n./adj. ｜ a user manual / manual work ｜ Read the user manual first.（手册）"},{"w":"mature","zh":"成熟的；使成熟","usage":"adj./v. ｜ a mature market / mature over time ｜ The market is now mature.（成熟）"},{"w":"mediate","zh":"调解；居间促成","usage":"v. ｜ mediate between ｜ A neutral party mediated the dispute.（调解）"},{"w":"medium","zh":"媒介；中等的","usage":"n./adj. ｜ a medium of / a medium size ｜ Radio is still a powerful medium.（媒介）"},{"w":"military","zh":"军事的；军队","usage":"adj./n. ｜ military service / the military ｜ The country spends heavily on military equipment.（军事）"},{"w":"minimal","zh":"最小的；极少的","usage":"adj. ｜ minimal damage / minimal effort ｜ The storm caused minimal damage.（极小）"},{"w":"mutual","zh":"相互的；共同的","usage":"adj. ｜ mutual respect / mutual benefit ｜ The deal is of mutual benefit.（相互）"},{"w":"norm","zh":"规范；常态","usage":"n. ｜ a social norm / the norm ｜ Remote work is now the norm.（常态）"},{"w":"overlap","zh":"重叠；重合","usage":"v./n. ｜ overlap with / an overlap between ｜ The two roles overlap considerably.（重叠）"},{"w":"passive","zh":"被动的；消极的","usage":"adj. ｜ passive resistance / a passive role ｜ Students should not be passive learners.（被动）"},{"w":"portion","zh":"部分；一份","usage":"n. ｜ a portion of / a large portion ｜ A portion of the fee goes to staff.（部分）"},{"w":"preliminary","zh":"初步的；预备的","usage":"adj. ｜ preliminary results / preliminary findings ｜ Preliminary results look promising.（初步）"},{"w":"protocol","zh":"协议；规程","usage":"n. ｜ a research protocol / follow protocol ｜ The lab follows a strict protocol.（规程）"},{"w":"qualitative","zh":"定性的；质量的","usage":"adj. ｜ qualitative research / qualitative data ｜ The study uses qualitative interviews.（定性）"},{"w":"refine","zh":"改进；提炼","usage":"v. ｜ refine a method / refine oil ｜ The team refined the model after testing.（改进）"},{"w":"relax","zh":"放宽；放松","usage":"v. ｜ relax rules / relax restrictions ｜ The rules were relaxed last year.（放宽）"},{"w":"restrain","zh":"抑制；约束","usage":"v. ｜ restrain growth / restrain sb from ｜ Higher rates restrained spending.（抑制）"},{"w":"revolution","zh":"革命；巨变","usage":"n. ｜ a digital revolution / the industrial revolution ｜ The internet brought a revolution in retail.（革命）"},{"w":"rigid","zh":"僵化的；坚硬的","usage":"adj. ｜ rigid rules / a rigid structure ｜ Rigid rules discourage innovation.（僵化）"},{"w":"route","zh":"路线；途径","usage":"n./v. ｜ a bus route / route sth through ｜ The new route cuts travel time.（路线）"},{"w":"scenario","zh":"情景；设想","usage":"n. ｜ a likely scenario / the worst-case scenario ｜ Planners tested three scenarios.（情景）"},{"w":"sphere","zh":"领域；球体","usage":"n. ｜ in the public sphere / a sphere of influence ｜ The issue belongs to the public sphere.（领域）"},{"w":"subordinate","zh":"下级的；次要的；服从","usage":"adj./n./v. ｜ be subordinate to / a subordinate ｜ Personal goals are subordinate to team goals.（服从）"},{"w":"supplement","zh":"补充；增补物","usage":"v./n. ｜ supplement income / a dietary supplement ｜ She supplements her salary with tutoring.（补充）"},{"w":"suspend","zh":"暂停；悬挂","usage":"v. ｜ suspend a service / be suspended ｜ The service was suspended during the storm.（暂停）"},{"w":"team","zh":"团队；协作","usage":"n./v. ｜ a research team / team up with ｜ The team meets every Monday.（团队）"},{"w":"temporary","zh":"临时的；暂时的","usage":"adj. ｜ temporary work / a temporary measure ｜ The bridge is a temporary measure.（临时）"},{"w":"trigger","zh":"引发；扳机","usage":"v./n. ｜ trigger a reaction / pull the trigger ｜ The report triggered a public debate.（引发）"},{"w":"unify","zh":"统一；使一致","usage":"v. ｜ unify standards / unify a country ｜ The plan unifies three local systems.（统一）"},{"w":"violate","zh":"违反；侵犯","usage":"v. ｜ violate a rule / violate privacy ｜ The firm violated data protection law.（违反）"},{"w":"vision","zh":"愿景；视力","usage":"n. ｜ a vision for / clear vision ｜ The city set out a vision for 2030.（愿景）"}]},{"key":"S10","label":"Sublist 10","words":[{"w":"adjacent","zh":"邻近的；相邻的","usage":"adj. ｜ adjacent to / adjacent rooms ｜ The hotel is adjacent to the station.（邻近）"},{"w":"albeit","zh":"尽管；虽然","usage":"conj. ｜ albeit slowly ｜ The plan worked, albeit slowly.（尽管）"},{"w":"assemble","zh":"组装；集合","usage":"v. ｜ assemble a team / assemble parts ｜ Workers assemble the units by hand.（组装）"},{"w":"collapse","zh":"崩溃；倒塌","usage":"v./n. ｜ collapse under / a market collapse ｜ The roof collapsed under the snow.（倒塌）"},{"w":"colleague","zh":"同事；同僚","usage":"n. ｜ a colleague at work / a former colleague ｜ She discussed the case with a colleague.（同事）"},{"w":"compile","zh":"汇编；编纂","usage":"v. ｜ compile a list / compile data ｜ The office compiles monthly statistics.（汇编）"},{"w":"conceive","zh":"构想；设想","usage":"v. ｜ conceive of / conceive an idea ｜ It is hard to conceive of life without water.（设想）"},{"w":"convince","zh":"说服；使确信","usage":"v. ｜ convince sb of / be convinced that ｜ The data convinced the committee.（说服）"},{"w":"depress","zh":"使沮丧；压低","usage":"v. ｜ depress prices / feel depressed ｜ The news depressed the whole team.（使沮丧）"},{"w":"encounter","zh":"遭遇；偶遇","usage":"v./n. ｜ encounter a problem / a chance encounter ｜ We encountered several delays.（遇到）"},{"w":"enormous","zh":"巨大的；庞大的","usage":"adj. ｜ enormous pressure / an enormous amount ｜ The project required enormous effort.（巨大）"},{"w":"forthcoming","zh":"即将到来的；乐于提供的","usage":"adj. ｜ the forthcoming election / be forthcoming about ｜ Details of the forthcoming report are unclear.（即将到来）"},{"w":"incline","zh":"倾向；倾斜","usage":"v./n. ｜ be inclined to / a steep incline ｜ I am inclined to agree with you.（倾向于）"},{"w":"integrity","zh":"诚信；完整性","usage":"n. ｜ data integrity / personal integrity ｜ The journal checks data integrity.（完整性）"},{"w":"intrinsic","zh":"内在的；固有的","usage":"adj. ｜ intrinsic value / intrinsic motivation ｜ Curiosity is an intrinsic motivation.（内在）"},{"w":"invoke","zh":"援引；调用","usage":"v. ｜ invoke a law / invoke a function ｜ The lawyer invoked an old statute.（援引）"},{"w":"levy","zh":"征收；税款","usage":"v./n. ｜ levy a tax / a levy on ｜ The city levies a fee on large vehicles.（征收）"},{"w":"likewise","zh":"同样地；也","usage":"adv. ｜ Likewise, ... ｜ The second group responded likewise.（同样）"},{"w":"nonetheless","zh":"尽管如此；但是","usage":"adv. ｜ Nonetheless, ... ｜ The sample is small; nonetheless, the trend is clear.（尽管如此）"},{"w":"notwithstanding","zh":"尽管；虽然","usage":"prep./adv. ｜ notwithstanding the risks ｜ Notwithstanding the risks, the trial went ahead.（尽管）"},{"w":"odd","zh":"奇怪的；奇数的","usage":"adj. ｜ an odd number / odd behaviour ｜ It is odd that nobody objected.（奇怪）"},{"w":"ongoing","zh":"持续的；进行中的","usage":"adj. ｜ ongoing research / an ongoing problem ｜ The investigation is ongoing.（持续）"},{"w":"panel","zh":"专家组；面板","usage":"n. ｜ a panel of experts / a solar panel ｜ A panel of experts reviewed the plan.（专家组）"},{"w":"persist","zh":"坚持；持续","usage":"v. ｜ persist in / problems persist ｜ The problem persists despite repairs.（持续）"},{"w":"pose","zh":"造成；摆姿势","usage":"v. ｜ pose a threat / pose for a photo ｜ Rising debt poses a risk to growth.（构成）"},{"w":"reluctance","zh":"不情愿；勉强","usage":"n. ｜ reluctance to do / with reluctance ｜ There is reluctance to raise taxes.（不情愿）"},{"w":"so-called","zh":"所谓的","usage":"adj. ｜ the so-called experts ｜ The so-called shortcut took longer.（所谓的）"},{"w":"straightforward","zh":"直接的；简单明了的","usage":"adj. ｜ a straightforward answer / relatively straightforward ｜ The process is fairly straightforward.（简单）"},{"w":"undergo","zh":"经历；经受","usage":"v. ｜ undergo treatment / undergo change ｜ The building underwent major repairs.（经历）"},{"w":"whereby","zh":"借此；凭此","usage":"adv. ｜ a system whereby ｜ They set up a scheme whereby students earn credit.（借此）"}]}];
+
+  var STORE_KEY = "awl6.state.v1";
+  var LEGACY_KEY = "awl5.mastered.v1";
+  var LEGACY_MASK = "awl5.masked.v1";
+
+  var storageOK = true;
+  function read(key, fallback, rawMode) {
+    try {
+      var raw = localStorage.getItem(key);
+      if (!raw) return fallback;
+      return rawMode ? raw : JSON.parse(raw);
+    } catch (e) {
+      storageOK = false;
+      return fallback;
+    }
+  }
+  function write(key, value) {
+    try {
+      localStorage.setItem(key, JSON.stringify(value));
+    } catch (e) {
+      storageOK = false;
+      toast("当前浏览器无法保存进度，本次操作仅在页面内有效");
+    }
+  }
+  function writeRaw(key, value) {
+    try { localStorage.setItem(key, String(value)); } catch (e) { storageOK = false; }
+  }
+
+  function validIds(arr, total) {
+    if (!Array.isArray(arr)) return [];
+    var seen = {};
+    return arr.filter(function (id) {
+      return typeof id === "number" && isFinite(id) && id >= 0 && id < total && !seen[id] && (seen[id] = true);
+    });
+  }
+
+  function defaultState() {
+    var m = {}, u = {};
+    UNITS.forEach(function (un) {
+      m[un.key] = [];
+      u[un.key] = [];
+    });
+    return { v: 1, unit: UNITS[0].key, mastered: m, undo: u, masked: false };
+  }
+
+  var saved = read(STORE_KEY, null);
+  var state = defaultState();
+  var firstRun = false;
+
+  if (saved && typeof saved === "object" && saved.mastered) {
+    state.unit = saved.unit;
+    state.masked = saved.masked === true;
+    UNITS.forEach(function (un) {
+      state.mastered[un.key] = validIds(saved.mastered[un.key], un.words.length);
+      state.undo[un.key] = validIds(saved.undo && saved.undo[un.key], un.words.length);
+    });
+  } else {
+    firstRun = true;
+    var legacy = read(LEGACY_KEY, []);
+    if (Array.isArray(legacy) && legacy.length) {
+      state.mastered[UNITS[0].key] = validIds(legacy, UNITS[0].words.length);
+    }
+    state.masked = read(LEGACY_MASK, false) === true;
+    writeRaw(LEGACY_KEY, "");
+    writeRaw(LEGACY_MASK, "");
+  }
+
+  var unitMap = {};
+  UNITS.forEach(function (un) { unitMap[un.key] = un; });
+  if (!unitMap[state.unit]) state.unit = UNITS[0].key;
+
+  var mastered = {};
+  var undoStack = {};
+  UNITS.forEach(function (un) {
+    mastered[un.key] = new Set(state.mastered[un.key]);
+    undoStack[un.key] = state.undo[un.key].slice();
+  });
+  var masked = state.masked;
+
+  var entriesEl = document.getElementById("entries");
+  var emptyEl = document.getElementById("empty");
+  var emptyTitle = document.getElementById("emptyTitle");
+  var emptyText = document.getElementById("emptyText");
+  var emptyAction = document.getElementById("emptyAction");
+  var unitsEl = document.getElementById("units");
+  var searchInput = document.getElementById("searchInput");
+  var searchWrap = document.getElementById("searchWrap");
+  var searchClear = document.getElementById("searchClear");
+  var masteredNum = document.getElementById("masteredNum");
+  var totalNum = document.getElementById("totalNum");
+  var progressUnit = document.getElementById("progressUnit");
+  var progressBar = document.getElementById("progressBar");
+  var progressNote = document.getElementById("progressNote");
+  var rateText = document.getElementById("rateText");
+  var resultCount = document.getElementById("resultCount");
+  var listLabel = document.getElementById("listLabel");
+  var footNote = document.getElementById("footNote");
+  var toggleDetailsBtn = document.getElementById("toggleDetails");
+  var undoBtn = document.getElementById("undoBtn");
+  var restoreBtn = document.getElementById("restoreBtn");
+  var toastEl = document.getElementById("toast");
+  var toastTimer = null;
+  var restoreArmed = false;
+  var restoreTimer = null;
+
+  function toast(msg) {
+    toastEl.textContent = msg;
+    toastEl.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () {
+      toastEl.classList.remove("show");
+    }, 2200);
+  }
+
+  function save() {
+    var snapshot = defaultState();
+    snapshot.unit = state.unit;
+    snapshot.masked = masked;
+    UNITS.forEach(function (un) {
+      snapshot.mastered[un.key] = Array.from(mastered[un.key]);
+      snapshot.undo[un.key] = undoStack[un.key].slice();
+    });
+    write(STORE_KEY, snapshot);
+  }
+
+  function currentUnit() {
+    return unitMap[state.unit];
+  }
+
+  function currentSet() {
+    return mastered[state.unit];
+  }
+
+  function pad(n) {
+    return String(n).padStart(2, "0");
+  }
+
+  function escapeHTML(str) {
+    return String(str).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+
+  function splitUsage(raw) {
+    var parts = String(raw).split("｜").map(function (s) { return s.trim(); });
+    return { pos: parts[0] || "", colloc: parts[1] || "", example: parts.slice(2).join(" ｜ ").trim() };
+  }
+
+  function rowHTML(item, id) {
+    var u = splitUsage(item.usage);
+    var concealed = masked ? " concealed" : "";
+    return '<li class="entry" data-id="' + id + '">' +
+      '<span class="idx">' + pad(id + 1) + '</span>' +
+      '<div class="word-col details' + concealed + '">' +
+        '<h2 class="word">' + escapeHTML(item.w) + '</h2>' +
+        '<p class="zh">' + escapeHTML(item.zh) + '</p>' +
+        '<button class="reveal-hint" type="button" data-reveal="' + id + '"><span class="underline">轻触揭晓</span> 中文与用法</button>' +
+      '</div>' +
+      '<div class="use-col details' + concealed + '">' +
+        '<div class="use-body">' +
+          '<p class="pos">' + escapeHTML(u.pos) + '</p>' +
+          '<p class="colloc">' + escapeHTML(u.colloc) + '</p>' +
+          '<p class="ex">' + escapeHTML(u.example) + '</p>' +
+        '</div>' +
+      '</div>' +
+      '<button class="master" type="button" data-master="' + id + '" aria-label="标记 ' + escapeHTML(item.w) + ' 为已掌握">' +
+        '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"></path></svg>' +
+        '<span>已掌握</span>' +
+      '</button>' +
+    '</li>';
+  }
+
+  function query() {
+    return searchInput.value.trim().toLowerCase();
+  }
+
+  function matches(item, q) {
+    if (!q) return true;
+    return (item.w + " " + item.zh + " " + item.usage).toLowerCase().indexOf(q) !== -1;
+  }
+
+  function visibleIds() {
+    var q = query();
+    var unit = currentUnit();
+    var set = currentSet();
+    var ids = [];
+    for (var i = 0; i < unit.words.length; i++) {
+      if (!set.has(i) && matches(unit.words[i], q)) ids.push(i);
+    }
+    return ids;
+  }
+
+  function renderTabs() {
+    UNITS.forEach(function (un) {
+      var tab = unitsEl.querySelector('[data-unit="' + un.key + '"]');
+      if (!tab) return;
+      var done = mastered[un.key].size;
+      var pct = Math.round((done / un.words.length) * 100);
+      tab.querySelector(".u-count").textContent = done + " / " + un.words.length;
+      tab.querySelector(".u-bar i").style.width = pct + "%";
+      var active = un.key === state.unit;
+      tab.classList.toggle("active", active);
+      if (active) tab.setAttribute("aria-current", "true");
+      else tab.removeAttribute("aria-current");
+    });
+  }
+
+  function render() {
+    var unit = currentUnit();
+    var set = currentSet();
+    var ids = visibleIds();
+    entriesEl.innerHTML = ids.map(function (id) { return rowHTML(unit.words[id], id); }).join("");
+
+    var q = query();
+    var remaining = unit.words.length - set.size;
+
+    listLabel.textContent = unit.label + " · " + unit.words.length + " 词";
+    searchInput.placeholder = "搜索单词、中文或用法…";
+    footNote.textContent = UNITS.reduce(function (a, u) { return a + u.words.length; }, 0) + " 词 · 学习记录仅保存在本机浏览器";
+
+    emptyEl.hidden = ids.length > 0;
+    if (ids.length === 0) {
+      if (remaining === 0) {
+        emptyTitle.textContent = unit.label + " 已全部掌握";
+        emptyText.textContent = "本单元 " + unit.words.length + " 个词都已标记完成，可恢复本单元或导出已掌握词表。";
+        emptyAction.textContent = "恢复本单元";
+        emptyAction.dataset.mode = "restore";
+      } else if (q) {
+        emptyTitle.textContent = "没有匹配的单词";
+        emptyText.textContent = "未找到包含「" + searchInput.value.trim() + "」的词条，试试其他拼写。";
+        emptyAction.textContent = "清空搜索";
+        emptyAction.dataset.mode = "clear";
+      } else {
+        emptyTitle.textContent = "列表为空";
+        emptyText.textContent = "全部单词都已标记为已掌握。";
+        emptyAction.textContent = "恢复本单元";
+        emptyAction.dataset.mode = "restore";
+      }
+    }
+
+    resultCount.textContent = q
+      ? "匹配 " + ids.length + " · 剩余 " + remaining
+      : "剩余 " + remaining;
+    updateStats();
+  }
+
+  function updateStats() {
+    var unit = currentUnit();
+    var done = currentSet().size;
+    var total = unit.words.length;
+    var remaining = total - done;
+    var pct = Math.round((done / total) * 100);
+    progressUnit.textContent = unit.label;
+    masteredNum.textContent = done;
+    totalNum.textContent = "/ " + total;
+    progressBar.style.width = pct + "%";
+    rateText.textContent = pct + "%";
+    progressNote.textContent = (storageOK ? "剩余 " + remaining + " 词 · 进度自动保存" : "剩余 " + remaining + " 词 · 进度未保存");
+    undoBtn.disabled = undoStack[unit.key].length === 0;
+    restoreBtn.disabled = done === 0;
+    toggleDetailsBtn.textContent = masked ? "显示释义" : "隐藏释义";
+    toggleDetailsBtn.setAttribute("aria-pressed", masked ? "true" : "false");
+    renderTabs();
+  }
+
+  function updateOne(id, delay) {
+    var node = entriesEl.querySelector('[data-id="' + id + '"]');
+    if (!node) return;
+    node.classList.add("leaving");
+    setTimeout(function () {
+      if (node.parentNode) node.parentNode.removeChild(node);
+      var unit = currentUnit();
+      var left = unit.words.length - currentSet().size;
+      if (!entriesEl.children.length) {
+        render();
+      } else {
+        resultCount.textContent = query()
+          ? "匹配 " + entriesEl.children.length + " · 剩余 " + left
+          : "剩余 " + left;
+        updateStats();
+      }
+    }, delay || 320);
+  }
+
+  function markMastered(id, announce) {
+    var unit = currentUnit();
+    var set = currentSet();
+    if (set.has(id)) return;
+    set.add(id);
+    var stack = undoStack[unit.key];
+    stack.push(id);
+    if (stack.length > 200) stack.shift();
+    save();
+    updateStats();
+    updateOne(id);
+    if (announce) toast("已标记掌握：" + unit.words[id].w);
+  }
+
+  function undo() {
+    var unit = currentUnit();
+    var set = currentSet();
+    var stack = undoStack[unit.key];
+    while (stack.length) {
+      var id = stack.pop();
+      if (set.has(id)) {
+        set.delete(id);
+        save();
+        render();
+        var node = entriesEl.querySelector('[data-id="' + id + '"]');
+        if (node) {
+          node.classList.add("flash");
+          if (typeof node.scrollIntoView === "function" && query() === "") {
+            node.scrollIntoView({ block: "center", behavior: "smooth" });
+          }
+        }
+        toast("已撤销：" + unit.words[id].w + " 回到列表");
+        return;
+      }
+    }
+    updateStats();
+  }
+
+  function restoreAll(silent) {
+    var unit = currentUnit();
+    var set = currentSet();
+    if (!set.size) return;
+    var count = set.size;
+    set.clear();
+    undoStack[unit.key] = [];
+    save();
+    resetRestoreBtn();
+    render();
+    if (!silent) toast("已恢复 " + unit.label + " 的 " + count + " 个单词");
+  }
+
+  function switchUnit(key) {
+    if (!unitMap[key] || key === state.unit) return;
+    state.unit = key;
+    save();
+    searchInput.value = "";
+    searchWrap.classList.remove("has-value");
+    resetRestoreBtn();
+    render();
+    toast("已切换到 " + unitMap[key].label);
+  }
+
+  // -- unit tabs --
+  UNITS.forEach(function (un) {
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "unit-tab";
+    b.setAttribute("data-unit", un.key);
+    b.innerHTML = '<span class="u-label">' + un.label + '</span>' +
+      '<span class="u-count">0 / ' + un.words.length + '</span>' +
+      '<span class="u-bar"><i></i></span>';
+    b.addEventListener("click", function () { switchUnit(un.key); });
+    unitsEl.appendChild(b);
+  });
+
+  // -- search --
+  function onSearch() {
+    searchWrap.classList.toggle("has-value", searchInput.value.length > 0);
+    render();
+  }
+  searchInput.addEventListener("input", onSearch);
+  searchClear.addEventListener("click", function () {
+    searchInput.value = "";
+    onSearch();
+    searchInput.focus();
+  });
+
+  // -- delegation --
+  entriesEl.addEventListener("click", function (e) {
+    var masterBtn = e.target.closest("[data-master]");
+    if (masterBtn) {
+      markMastered(Number(masterBtn.getAttribute("data-master")), true);
+      return;
+    }
+    var revealBtn = e.target.closest("[data-reveal]");
+    if (revealBtn) {
+      var id = revealBtn.getAttribute("data-reveal");
+      var card = entriesEl.querySelector('[data-id="' + id + '"]');
+      if (card) {
+        var parts = card.querySelectorAll(".details");
+        for (var i = 0; i < parts.length; i++) parts[i].classList.remove("concealed");
+      }
+    }
+  });
+
+  // -- toolbar --
+  toggleDetailsBtn.addEventListener("click", function () {
+    masked = !masked;
+    save();
+    render();
+    toast(masked ? "已隐藏中文与用法，可逐词轻触揭晓" : "已显示全部中文与用法");
+  });
+
+  undoBtn.addEventListener("click", undo);
+
+  function resetRestoreBtn() {
+    restoreArmed = false;
+    restoreBtn.textContent = "恢复本单元";
+    restoreBtn.classList.remove("accent");
+    clearTimeout(restoreTimer);
+  }
+
+  restoreBtn.addEventListener("click", function () {
+    if (!restoreArmed) {
+      restoreArmed = true;
+      restoreBtn.textContent = "确认恢复本单元？";
+      restoreBtn.classList.add("accent");
+      clearTimeout(restoreTimer);
+      restoreTimer = setTimeout(resetRestoreBtn, 3000);
+      return;
+    }
+    restoreAll(false);
+  });
+
+  // -- empty action --
+  emptyAction.addEventListener("click", function () {
+    if (emptyAction.dataset.mode === "restore") {
+      restoreAll(false);
+    } else {
+      searchInput.value = "";
+      onSearch();
+      searchInput.focus();
+    }
+  });
+
+  // -- export --
+  function csvCell(value) {
+    return '"' + String(value).replace(/"/g, '""') + '"';
+  }
+
+  function stamp() {
+    var d = new Date();
+    return d.getFullYear() + pad(d.getMonth() + 1) + pad(d.getDate());
+  }
+
+  function downloadCSV(records, namePart, label) {
+    if (!records.length) {
+      toast("没有可导出的单词");
+      return;
+    }
+    var rows = [["单元", "序号", "单词", "中文翻译", "用法"].map(csvCell).join(",")];
+    records.forEach(function (r) {
+      rows.push([r.unit, r.index, r.word, r.zh, r.usage].map(csvCell).join(","));
+    });
+    var csv = "\uFEFF" + rows.join("\r\n") + "\r\n";
+    var blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "AWL-" + namePart + "-" + stamp() + ".csv";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+    toast("已导出 " + records.length + " 条：" + label);
+  }
+
+  function unitRecords(unit, mode) {
+    var set = mastered[unit.key];
+    var out = [];
+    for (var i = 0; i < unit.words.length; i++) {
+      var isDone = set.has(i);
+      if ((mode === "done") === isDone) {
+        var item = unit.words[i];
+        out.push({ unit: unit.label, index: i + 1, word: item.w, zh: item.zh, usage: item.usage });
+      }
+    }
+    return out;
+  }
+
+  function allRecords(mode) {
+    var out = [];
+    UNITS.forEach(function (un) {
+      out = out.concat(unitRecords(un, mode));
+    });
+    return out;
+  }
+
+  document.getElementById("exportLeft").addEventListener("click", function () {
+    downloadCSV(unitRecords(currentUnit(), "left"), currentUnit().label + "-剩余", currentUnit().label + " 剩余");
+  });
+  document.getElementById("exportDone").addEventListener("click", function () {
+    downloadCSV(unitRecords(currentUnit(), "done"), currentUnit().label + "-已掌握", currentUnit().label + " 已掌握");
+  });
+  document.getElementById("exportAllLeft").addEventListener("click", function () {
+    downloadCSV(allRecords("left"), "Sublist5-10-全部剩余", "全部单元剩余");
+  });
+  document.getElementById("exportAllDone").addEventListener("click", function () {
+    downloadCSV(allRecords("done"), "Sublist5-10-全部已掌握", "全部单元已掌握");
+  });
+
+  // -- keyboard: cmd/ctrl+z undo, "/" focus search --
+  document.addEventListener("keydown", function (e) {
+    var tag = (e.target.tagName || "").toLowerCase();
+    var typing = tag === "input" || tag === "textarea";
+    if ((e.metaKey || e.ctrlKey) && e.key && e.key.toLowerCase() === "z" && !typing) {
+      if (undoStack[state.unit].length) { e.preventDefault(); undo(); }
+    }
+    if (e.key === "/" && !typing) {
+      e.preventDefault();
+      searchInput.focus();
+    }
+  });
+
+  // -- init --
+  if (firstRun) save();
+  render();
+})();
+</script>
+</body>
+</html>
